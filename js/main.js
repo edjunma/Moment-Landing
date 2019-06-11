@@ -51,3 +51,4 @@ function setBgGreet() {
 
 // Run
 showTime();
+setBgGreet();
