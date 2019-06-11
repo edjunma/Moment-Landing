@@ -18,9 +18,28 @@ function showTime() {
 	hour = hour % 12 || 12;
 
 	// Output Time
-	time.innerHTML = `${hour}<span>:</span>?{min}<span>:</span>${sec}`;
+	time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}`;
 
 	setTimeout(showTime, 1000);
+}
+
+// Add zeros
+function addZero(n) {
+	return (parseInt(n, 10) < 10 ? '0' : '') + n;
+}
+
+// Set Background and Greeting
+function setBgGreet() {
+  let today = new Date(),
+    hour = today.getHours();
+  
+  if(hour < 12) {
+    // Morning
+  } else if(hour < 18) {
+    // Afternoon
+  } else {
+    // Evening
+  }
 }
 
 // Run
