@@ -30,16 +30,23 @@ function addZero(n) {
 
 // Set Background and Greeting
 function setBgGreet() {
-  let today = new Date(),
-    hour = today.getHours();
-  
-  if(hour < 12) {
-    // Morning
-  } else if(hour < 18) {
-    // Afternoon
-  } else {
-    // Evening
-  }
+	let today = new Date(),
+		hour = today.getHours();
+
+	if (hour < 12) {
+		// Morning
+		document.body.style.backgroundImage = "url('../img/morning.jpg')";
+		greeting.textContent = 'Good Morning';
+	} else if (hour < 18) {
+		// Afternoon
+		document.body.style.backgroundImage = "url('../img/afternoon.jpg')";
+		greeting.textContent = 'Good Afternoon';
+	} else {
+		// Evening
+		document.body.style.backgroundImage = "url('../img/evening.jpg')";
+		greeting.textContent = 'Good Evening';
+		document.body.style.color = 'white';
+	}
 }
 
 // Run
