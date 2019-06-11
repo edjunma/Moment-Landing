@@ -4,6 +4,9 @@ const time = document.getElementById('time'),
 	name = document.getElementById('name'),
 	focus = document.getElementById('focus');
 
+// Options
+const showAmPm = true;
+
 // Show Time
 function showTime() {
 	let today = new Date(),
@@ -12,18 +15,20 @@ function showTime() {
 		sec = today.getSeconds();
 
 	// Set AM or PM
-	const amPM = hour >= 12 ? 'PM' : 'AM';
+	const amPm = hour >= 12 ? 'PM' : 'AM';
 
-	// 12-hour Format
+	// 12hr Format
 	hour = hour % 12 || 12;
 
 	// Output Time
-	time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}`;
+	time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} ${
+		showAmPm ? amPm : ''
+	}`;
 
 	setTimeout(showTime, 1000);
 }
 
-// Add zeros
+// Add Zeros
 function addZero(n) {
 	return (parseInt(n, 10) < 10 ? '0' : '') + n;
 }
@@ -35,16 +40,16 @@ function setBgGreet() {
 
 	if (hour < 12) {
 		// Morning
-		document.body.style.backgroundImage = "url('../img/morning.jpg')";
-		greeting.textContent = 'Good Morning';
+		document.body.style.backgroundImage = "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
+		greeting.textContent = 'Good Morning, ';
 	} else if (hour < 18) {
 		// Afternoon
-		document.body.style.backgroundImage = "url('../img/afternoon.jpg')";
-		greeting.textContent = 'Good Afternoon';
+		document.body.style.backgroundImage = "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
+		greeting.textContent = 'Good Afternoon, ';
 	} else {
 		// Evening
-		document.body.style.backgroundImage = "url('../img/evening.jpg')";
-		greeting.textContent = 'Good Evening';
+		document.body.style.backgroundImage = "url('https://i.ibb.co/924T2Wv/night.jpg')";
+		greeting.textContent = 'Good Evening, ';
 		document.body.style.color = 'white';
 	}
 }
@@ -52,7 +57,7 @@ function setBgGreet() {
 // Get Name
 function getName() {
 	if (localStorage.getItem('name') === null) {
-		name.textContent = '[Enter Your Name]';
+		name.textContent = '[Enter Name]';
 	} else {
 		name.textContent = localStorage.getItem('name');
 	}
@@ -74,7 +79,7 @@ function setName(e) {
 // Get Focus
 function getFocus() {
 	if (localStorage.getItem('focus') === null) {
-		focus.textContent = '[Enter a Focus]';
+		focus.textContent = '[Enter Focus]';
 	} else {
 		focus.textContent = localStorage.getItem('focus');
 	}
